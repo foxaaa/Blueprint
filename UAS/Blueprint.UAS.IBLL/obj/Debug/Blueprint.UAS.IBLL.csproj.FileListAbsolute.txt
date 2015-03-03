@@ -1,0 +1,11 @@
+E:\Blueprint\UAS\Blueprint.UAS.IBLL\bin\Debug\Blueprint.UAS.IBLL.dll
+E:\Blueprint\UAS\Blueprint.UAS.IBLL\bin\Debug\Blueprint.UAS.IBLL.pdb
+E:\Blueprint\UAS\Blueprint.UAS.IBLL\obj\Debug\Blueprint.UAS.IBLL.dll
+E:\Blueprint\UAS\Blueprint.UAS.IBLL\obj\Debug\Blueprint.UAS.IBLL.pdb
+E:\Blueprint\UAS\Blueprint.UAS.IBLL\bin\Debug\Blueprint.Core.IBusiness.dll
+E:\Blueprint\UAS\Blueprint.UAS.IBLL\bin\Debug\Blueprint.UAS.Entity.dll
+E:\Blueprint\UAS\Blueprint.UAS.IBLL\bin\Debug\EntityFramework.dll
+E:\Blueprint\UAS\Blueprint.UAS.IBLL\bin\Debug\Blueprint.Core.IBusiness.pdb
+E:\Blueprint\UAS\Blueprint.UAS.IBLL\bin\Debug\Blueprint.UAS.Entity.pdb
+E:\Blueprint\UAS\Blueprint.UAS.IBLL\bin\Debug\EntityFramework.xml
+E:\Blueprint\UAS\Blueprint.UAS.IBLL\obj\Debug\Blueprint.UAS.IBLL.csprojResolveAssemblyReference.cache

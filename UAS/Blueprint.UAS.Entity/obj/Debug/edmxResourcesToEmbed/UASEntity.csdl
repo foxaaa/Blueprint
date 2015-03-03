@@ -1,0 +1,90 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema xmlns="http://schemas.microsoft.com/ado/2009/11/edm" xmlns:cg="http://schemas.microsoft.com/ado/2006/04/codegeneration" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" Namespace="UASEntity" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" annotation:UseStrongSpatialTypes="false">
+  <EntityContainer Name="UASEntityContainer" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="OrgSet" EntityType="UASEntity.Org" />
+    <EntitySet Name="DeptSet" EntityType="UASEntity.Dept" />
+    <EntitySet Name="EmplSet" EntityType="UASEntity.Empl" />
+    <EntitySet Name="RuleSet" EntityType="UASEntity.Rule" />
+    <EntitySet Name="AuthSet" EntityType="UASEntity.Auth" />
+    <AssociationSet Name="OrgDept" Association="UASEntity.OrgDept">
+      <End Role="Org" EntitySet="OrgSet" />
+      <End Role="Dept" EntitySet="DeptSet" />
+    </AssociationSet>
+    <AssociationSet Name="DeptEmpl" Association="UASEntity.DeptEmpl">
+      <End Role="Dept" EntitySet="DeptSet" />
+      <End Role="Empl" EntitySet="EmplSet" />
+    </AssociationSet>
+    <AssociationSet Name="EmplRule" Association="UASEntity.EmplRule">
+      <End Role="Empl" EntitySet="EmplSet" />
+      <End Role="Rule" EntitySet="RuleSet" />
+    </AssociationSet>
+    <AssociationSet Name="RuleAuth" Association="UASEntity.RuleAuth">
+      <End Role="Rule" EntitySet="RuleSet" />
+      <End Role="Auth" EntitySet="AuthSet" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Org">
+    <Key>
+      <PropertyRef Name="Code" />
+    </Key>
+    <Property Name="Code" Type="String" Nullable="false" annotation:StoreGeneratedPattern="None" MaxLength="20" />
+    <Property Name="Name" Type="String" Nullable="false" annotation:StoreGeneratedPattern="None" />
+    <Property Name="Seq" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Dept" Relationship="UASEntity.OrgDept" FromRole="Org" ToRole="Dept" />
+  </EntityType>
+  <EntityType Name="Dept">
+    <Key>
+      <PropertyRef Name="Code" />
+    </Key>
+    <Property Name="Code" Type="String" Nullable="false" annotation:StoreGeneratedPattern="None" MaxLength="20" />
+    <Property Name="Name" Type="String" Nullable="false" />
+    <Property Name="Seq" Type="Int32" Nullable="false" DefaultValue="0" />
+    <NavigationProperty Name="Org" Relationship="UASEntity.OrgDept" FromRole="Dept" ToRole="Org" />
+    <NavigationProperty Name="Empl" Relationship="UASEntity.DeptEmpl" FromRole="Dept" ToRole="Empl" />
+  </EntityType>
+  <EntityType Name="Empl">
+    <Key>
+      <PropertyRef Name="Code" />
+    </Key>
+    <Property Name="Code" Type="String" Nullable="false" annotation:StoreGeneratedPattern="None" MaxLength="20" />
+    <Property Name="Name" Type="String" Nullable="false" />
+    <Property Name="Seq" Type="Int32" Nullable="false" DefaultValue="0" />
+    <NavigationProperty Name="Dept" Relationship="UASEntity.DeptEmpl" FromRole="Empl" ToRole="Dept" />
+    <NavigationProperty Name="Rule" Relationship="UASEntity.EmplRule" FromRole="Empl" ToRole="Rule" />
+  </EntityType>
+  <EntityType Name="Rule">
+    <Key>
+      <PropertyRef Name="Code" />
+    </Key>
+    <Property Name="Code" Type="String" Nullable="false" annotation:StoreGeneratedPattern="None" MaxLength="20" />
+    <Property Name="Name" Type="String" Nullable="false" />
+    <Property Name="Seq" Type="Int32" Nullable="false" DefaultValue="0" />
+    <NavigationProperty Name="Empl" Relationship="UASEntity.EmplRule" FromRole="Rule" ToRole="Empl" />
+    <NavigationProperty Name="Auth" Relationship="UASEntity.RuleAuth" FromRole="Rule" ToRole="Auth" />
+  </EntityType>
+  <EntityType Name="Auth">
+    <Key>
+      <PropertyRef Name="Code" />
+    </Key>
+    <Property Name="Code" Type="String" Nullable="false" annotation:StoreGeneratedPattern="None" MaxLength="20" />
+    <Property Name="Description" Type="String" Nullable="false" />
+    <Property Name="Seq" Type="Int32" Nullable="false" DefaultValue="0" />
+    <NavigationProperty Name="Rule" Relationship="UASEntity.RuleAuth" FromRole="Auth" ToRole="Rule" />
+  </EntityType>
+  <Association Name="OrgDept">
+    <End Type="UASEntity.Org" Role="Org" Multiplicity="1" />
+    <End Type="UASEntity.Dept" Role="Dept" Multiplicity="*" />
+  </Association>
+  <Association Name="DeptEmpl">
+    <End Type="UASEntity.Dept" Role="Dept" Multiplicity="1" />
+    <End Type="UASEntity.Empl" Role="Empl" Multiplicity="*" />
+  </Association>
+  <Association Name="EmplRule">
+    <End Type="UASEntity.Empl" Role="Empl" Multiplicity="*" />
+    <End Type="UASEntity.Rule" Role="Rule" Multiplicity="*" />
+  </Association>
+  <Association Name="RuleAuth">
+    <End Type="UASEntity.Rule" Role="Rule" Multiplicity="*" />
+    <End Type="UASEntity.Auth" Role="Auth" Multiplicity="*" />
+  </Association>
+</Schema>

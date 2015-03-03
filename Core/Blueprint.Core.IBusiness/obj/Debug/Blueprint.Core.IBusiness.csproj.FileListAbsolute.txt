@@ -1,0 +1,5 @@
+E:\Blueprint\Core\Blueprint.Core.IBusiness\bin\Debug\Blueprint.Core.IBusiness.dll
+E:\Blueprint\Core\Blueprint.Core.IBusiness\bin\Debug\Blueprint.Core.IBusiness.pdb
+E:\Blueprint\Core\Blueprint.Core.IBusiness\obj\Debug\Blueprint.Core.IBusiness.dll
+E:\Blueprint\Core\Blueprint.Core.IBusiness\obj\Debug\Blueprint.Core.IBusiness.pdb
+E:\Blueprint\Core\Blueprint.Core.IBusiness\obj\Debug\Blueprint.Core.IBusiness.csprojResolveAssemblyReference.cache

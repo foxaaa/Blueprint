@@ -1,0 +1,5 @@
+E:\Blueprint\Core\Blueprint.Core.IDataAccess\bin\Debug\Blueprint.Core.IDataAccess.dll
+E:\Blueprint\Core\Blueprint.Core.IDataAccess\bin\Debug\Blueprint.Core.IDataAccess.pdb
+E:\Blueprint\Core\Blueprint.Core.IDataAccess\obj\Debug\Blueprint.Core.IDataAccess.dll
+E:\Blueprint\Core\Blueprint.Core.IDataAccess\obj\Debug\Blueprint.Core.IDataAccess.pdb
+E:\Blueprint\Core\Blueprint.Core.IDataAccess\obj\Debug\Blueprint.Core.IDataAccess.csprojResolveAssemblyReference.cache

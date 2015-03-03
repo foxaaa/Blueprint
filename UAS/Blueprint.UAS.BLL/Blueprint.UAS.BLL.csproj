@@ -1,0 +1,100 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{235D9E8C-AE56-4AE2-9793-FD159C4DFD2B}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Blueprint.UAS.BLL</RootNamespace>
+    <AssemblyName>Blueprint.UAS.BLL</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\packages\EntityFramework.6.1.2\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer">
+      <HintPath>..\..\packages\EntityFramework.6.1.2\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AuthService.cs" />
+    <Compile Include="BaseService.cs" />
+    <Compile Include="DeptService.cs" />
+    <Compile Include="EmplService.cs" />
+    <Compile Include="OrgService.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RuleService.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\Core\Blueprint.Core.DAL\Blueprint.Core.BaseDataAccess.csproj">
+      <Project>{f6409a30-5247-4252-98fe-af748302882e}</Project>
+      <Name>Blueprint.Core.BaseDataAccess</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Core\Blueprint.Core.Domain\Blueprint.Core.BaseBusiness.csproj">
+      <Project>{51f7d088-0101-4ed7-8500-74888f2976a5}</Project>
+      <Name>Blueprint.Core.BaseBusiness</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Core\Blueprint.Core.IBusiness\Blueprint.Core.IBusiness.csproj">
+      <Project>{be8f9436-74fa-4a38-9dee-d77a428e5d2b}</Project>
+      <Name>Blueprint.Core.IBusiness</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Core\Blueprint.Core.IDataAccess\Blueprint.Core.IDataAccess.csproj">
+      <Project>{ec78235c-2b95-4b79-a2bb-f1fd648ceba4}</Project>
+      <Name>Blueprint.Core.IDataAccess</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Tool\Blueprint.Tool.ExtMethods\Blueprint.Tool.ExtMethod.csproj">
+      <Project>{8a76a0bb-676d-42ef-b744-703bcf385a5a}</Project>
+      <Name>Blueprint.Tool.ExtMethod</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Blueprint.UAS.Entity\Blueprint.UAS.Entity.csproj">
+      <Project>{64979081-cccf-4a53-a445-75bd9618b7f1}</Project>
+      <Name>Blueprint.UAS.Entity</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Blueprint.UAS.IBLL\Blueprint.UAS.IBLL.csproj">
+      <Project>{31524307-c08a-4049-a987-052ea2a0d9ca}</Project>
+      <Name>Blueprint.UAS.IBLL</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

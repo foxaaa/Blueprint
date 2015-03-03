@@ -1,0 +1,367 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="UASEntity.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2012" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityContainer Name="UASEntityStoreContainer">
+    <EntitySet Name="OrgSet" EntityType="UASEntity.Store.OrgSet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="DeptSet" EntityType="UASEntity.Store.DeptSet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="EmplSet" EntityType="UASEntity.Store.EmplSet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="RuleSet" EntityType="UASEntity.Store.RuleSet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="AuthSet" EntityType="UASEntity.Store.AuthSet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="EmplRule" EntityType="UASEntity.Store.EmplRule" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="RuleAuth" EntityType="UASEntity.Store.RuleAuth" store:Type="Tables" Schema="dbo" />
+    <AssociationSet Name="OrgDept" Association="UASEntity.Store.OrgDept">
+      <End Role="Org" EntitySet="OrgSet" />
+      <End Role="Dept" EntitySet="DeptSet" />
+    </AssociationSet>
+    <AssociationSet Name="DeptEmpl" Association="UASEntity.Store.DeptEmpl">
+      <End Role="Dept" EntitySet="DeptSet" />
+      <End Role="Empl" EntitySet="EmplSet" />
+    </AssociationSet>
+    <AssociationSet Name="FK_EmplRule_Empl" Association="UASEntity.Store.FK_EmplRule_Empl">
+      <End Role="Empl" EntitySet="EmplSet" />
+      <End Role="EmplRule" EntitySet="EmplRule" />
+    </AssociationSet>
+    <AssociationSet Name="FK_EmplRule_Rule" Association="UASEntity.Store.FK_EmplRule_Rule">
+      <End Role="Rule" EntitySet="RuleSet" />
+      <End Role="EmplRule" EntitySet="EmplRule" />
+    </AssociationSet>
+    <AssociationSet Name="FK_RuleAuth_Rule" Association="UASEntity.Store.FK_RuleAuth_Rule">
+      <End Role="Rule" EntitySet="RuleSet" />
+      <End Role="RuleAuth" EntitySet="RuleAuth" />
+    </AssociationSet>
+    <AssociationSet Name="FK_RuleAuth_Auth" Association="UASEntity.Store.FK_RuleAuth_Auth">
+      <End Role="Auth" EntitySet="AuthSet" />
+      <End Role="RuleAuth" EntitySet="RuleAuth" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="OrgSet">
+    <Key>
+      <PropertyRef Name="Code" />
+    </Key>
+    <Property Name="Code" Type="nvarchar" Nullable="false" MaxLength="20" />
+    <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Seq" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="DeptSet">
+    <Key>
+      <PropertyRef Name="Code" />
+    </Key>
+    <Property Name="Code" Type="nvarchar" Nullable="false" MaxLength="20" />
+    <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Seq" Type="int" Nullable="false" DefaultValue="0" />
+    <Property Name="Org_Code" Type="nvarchar" MaxLength="20" Nullable="false" />
+  </EntityType>
+  <EntityType Name="EmplSet">
+    <Key>
+      <PropertyRef Name="Code" />
+    </Key>
+    <Property Name="Code" Type="nvarchar" Nullable="false" MaxLength="20" />
+    <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Seq" Type="int" Nullable="false" DefaultValue="0" />
+    <Property Name="Dept_Code" Type="nvarchar" MaxLength="20" Nullable="false" />
+  </EntityType>
+  <EntityType Name="RuleSet">
+    <Key>
+      <PropertyRef Name="Code" />
+    </Key>
+    <Property Name="Code" Type="nvarchar" Nullable="false" MaxLength="20" />
+    <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Seq" Type="int" Nullable="false" DefaultValue="0" />
+  </EntityType>
+  <EntityType Name="AuthSet">
+    <Key>
+      <PropertyRef Name="Code" />
+    </Key>
+    <Property Name="Code" Type="nvarchar" Nullable="false" MaxLength="20" />
+    <Property Name="Description" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Seq" Type="int" Nullable="false" DefaultValue="0" />
+  </EntityType>
+  <EntityType Name="EmplRule">
+    <Key>
+      <PropertyRef Name="Empl_Code" />
+      <PropertyRef Name="Rule_Code" />
+    </Key>
+    <Property Name="Empl_Code" Type="nvarchar" Nullable="false" MaxLength="20" />
+    <Property Name="Rule_Code" Type="nvarchar" Nullable="false" MaxLength="20" />
+  </EntityType>
+  <EntityType Name="RuleAuth">
+    <Key>
+      <PropertyRef Name="Rule_Code" />
+      <PropertyRef Name="Auth_Code" />
+    </Key>
+    <Property Name="Rule_Code" Type="nvarchar" Nullable="false" MaxLength="20" />
+    <Property Name="Auth_Code" Type="nvarchar" Nullable="false" MaxLength="20" />
+  </EntityType>
+  <Association Name="OrgDept">
+    <End Role="Org" Type="UASEntity.Store.OrgSet" Multiplicity="1" />
+    <End Role="Dept" Type="UASEntity.Store.DeptSet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Org">
+        <PropertyRef Name="Code" />
+      </Principal>
+      <Dependent Role="Dept">
+        <PropertyRef Name="Org_Code" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="DeptEmpl">
+    <End Role="Dept" Type="UASEntity.Store.DeptSet" Multiplicity="1" />
+    <End Role="Empl" Type="UASEntity.Store.EmplSet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Dept">
+        <PropertyRef Name="Code" />
+      </Principal>
+      <Dependent Role="Empl">
+        <PropertyRef Name="Dept_Code" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_EmplRule_Empl">
+    <End Role="Empl" Type="UASEntity.Store.EmplSet" Multiplicity="1" />
+    <End Role="EmplRule" Type="UASEntity.Store.EmplRule" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Empl">
+        <PropertyRef Name="Code" />
+      </Principal>
+      <Dependent Role="EmplRule">
+        <PropertyRef Name="Empl_Code" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_EmplRule_Rule">
+    <End Role="EmplRule" Type="UASEntity.Store.EmplRule" Multiplicity="*" />
+    <End Role="Rule" Type="UASEntity.Store.RuleSet" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="Rule">
+        <PropertyRef Name="Code" />
+      </Principal>
+      <Dependent Role="EmplRule">
+        <PropertyRef Name="Rule_Code" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_RuleAuth_Rule">
+    <End Role="Rule" Type="UASEntity.Store.RuleSet" Multiplicity="1" />
+    <End Role="RuleAuth" Type="UASEntity.Store.RuleAuth" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Rule">
+        <PropertyRef Name="Code" />
+      </Principal>
+      <Dependent Role="RuleAuth">
+        <PropertyRef Name="Rule_Code" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_RuleAuth_Auth">
+    <End Role="RuleAuth" Type="UASEntity.Store.RuleAuth" Multiplicity="*" />
+    <End Role="Auth" Type="UASEntity.Store.AuthSet" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="Auth">
+        <PropertyRef Name="Code" />
+      </Principal>
+      <Dependent Role="RuleAuth">
+        <PropertyRef Name="Auth_Code" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema xmlns="http://schemas.microsoft.com/ado/2009/11/edm" xmlns:cg="http://schemas.microsoft.com/ado/2006/04/codegeneration" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" Namespace="UASEntity" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" annotation:UseStrongSpatialTypes="false">
+        <EntityContainer Name="UASEntityContainer" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="OrgSet" EntityType="UASEntity.Org" />
+          <EntitySet Name="DeptSet" EntityType="UASEntity.Dept" />
+          <EntitySet Name="EmplSet" EntityType="UASEntity.Empl" />
+          <EntitySet Name="RuleSet" EntityType="UASEntity.Rule" />
+          <EntitySet Name="AuthSet" EntityType="UASEntity.Auth" />
+          <AssociationSet Name="OrgDept" Association="UASEntity.OrgDept">
+            <End Role="Org" EntitySet="OrgSet" />
+            <End Role="Dept" EntitySet="DeptSet" />
+          </AssociationSet>
+          <AssociationSet Name="DeptEmpl" Association="UASEntity.DeptEmpl">
+            <End Role="Dept" EntitySet="DeptSet" />
+            <End Role="Empl" EntitySet="EmplSet" />
+          </AssociationSet>
+          <AssociationSet Name="EmplRule" Association="UASEntity.EmplRule">
+            <End Role="Empl" EntitySet="EmplSet" />
+            <End Role="Rule" EntitySet="RuleSet" />
+          </AssociationSet>
+          <AssociationSet Name="RuleAuth" Association="UASEntity.RuleAuth">
+            <End Role="Rule" EntitySet="RuleSet" />
+            <End Role="Auth" EntitySet="AuthSet" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Org">
+          <Key>
+            <PropertyRef Name="Code" />
+          </Key>
+          <Property Name="Code" Type="String" Nullable="false" annotation:StoreGeneratedPattern="None" MaxLength="20" />
+          <Property Name="Name" Type="String" Nullable="false" annotation:StoreGeneratedPattern="None" />
+          <Property Name="Seq" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Dept" Relationship="UASEntity.OrgDept" FromRole="Org" ToRole="Dept" />
+        </EntityType>
+        <EntityType Name="Dept">
+          <Key>
+            <PropertyRef Name="Code" />
+          </Key>
+          <Property Name="Code" Type="String" Nullable="false" annotation:StoreGeneratedPattern="None" MaxLength="20" />
+          <Property Name="Name" Type="String" Nullable="false" />
+          <Property Name="Seq" Type="Int32" Nullable="false" DefaultValue="0" />
+          <NavigationProperty Name="Org" Relationship="UASEntity.OrgDept" FromRole="Dept" ToRole="Org" />
+          <NavigationProperty Name="Empl" Relationship="UASEntity.DeptEmpl" FromRole="Dept" ToRole="Empl" />
+        </EntityType>
+        <EntityType Name="Empl">
+          <Key>
+            <PropertyRef Name="Code" />
+          </Key>
+          <Property Name="Code" Type="String" Nullable="false" annotation:StoreGeneratedPattern="None" MaxLength="20" />
+          <Property Name="Name" Type="String" Nullable="false" />
+          <Property Name="Seq" Type="Int32" Nullable="false" DefaultValue="0" />
+          <NavigationProperty Name="Dept" Relationship="UASEntity.DeptEmpl" FromRole="Empl" ToRole="Dept" />
+          <NavigationProperty Name="Rule" Relationship="UASEntity.EmplRule" FromRole="Empl" ToRole="Rule" />
+        </EntityType>
+        <EntityType Name="Rule">
+          <Key>
+            <PropertyRef Name="Code" />
+          </Key>
+          <Property Name="Code" Type="String" Nullable="false" annotation:StoreGeneratedPattern="None" MaxLength="20" />
+          <Property Name="Name" Type="String" Nullable="false" />
+          <Property Name="Seq" Type="Int32" Nullable="false" DefaultValue="0" />
+          <NavigationProperty Name="Empl" Relationship="UASEntity.EmplRule" FromRole="Rule" ToRole="Empl" />
+          <NavigationProperty Name="Auth" Relationship="UASEntity.RuleAuth" FromRole="Rule" ToRole="Auth" />
+        </EntityType>
+        <EntityType Name="Auth">
+          <Key>
+            <PropertyRef Name="Code" />
+          </Key>
+          <Property Name="Code" Type="String" Nullable="false" annotation:StoreGeneratedPattern="None" MaxLength="20" />
+          <Property Name="Description" Type="String" Nullable="false" />
+          <Property Name="Seq" Type="Int32" Nullable="false" DefaultValue="0" />
+          <NavigationProperty Name="Rule" Relationship="UASEntity.RuleAuth" FromRole="Auth" ToRole="Rule" />
+        </EntityType>
+        <Association Name="OrgDept">
+          <End Type="UASEntity.Org" Role="Org" Multiplicity="1" />
+          <End Type="UASEntity.Dept" Role="Dept" Multiplicity="*" />
+        </Association>
+        <Association Name="DeptEmpl">
+          <End Type="UASEntity.Dept" Role="Dept" Multiplicity="1" />
+          <End Type="UASEntity.Empl" Role="Empl" Multiplicity="*" />
+        </Association>
+        <Association Name="EmplRule">
+          <End Type="UASEntity.Empl" Role="Empl" Multiplicity="*" />
+          <End Type="UASEntity.Rule" Role="Rule" Multiplicity="*" />
+        </Association>
+        <Association Name="RuleAuth">
+          <End Type="UASEntity.Rule" Role="Rule" Multiplicity="*" />
+          <End Type="UASEntity.Auth" Role="Auth" Multiplicity="*" />
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+    <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="UASEntityStoreContainer" CdmEntityContainer="UASEntityContainer">
+    <EntitySetMapping Name="OrgSet">
+      <EntityTypeMapping TypeName="IsTypeOf(UASEntity.Org)">
+        <MappingFragment StoreEntitySet="OrgSet">
+          <ScalarProperty Name="Code" ColumnName="Code" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Seq" ColumnName="Seq" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DeptSet">
+      <EntityTypeMapping TypeName="IsTypeOf(UASEntity.Dept)">
+        <MappingFragment StoreEntitySet="DeptSet">
+          <ScalarProperty Name="Code" ColumnName="Code" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Seq" ColumnName="Seq" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="EmplSet">
+      <EntityTypeMapping TypeName="IsTypeOf(UASEntity.Empl)">
+        <MappingFragment StoreEntitySet="EmplSet">
+          <ScalarProperty Name="Code" ColumnName="Code" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Seq" ColumnName="Seq" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="RuleSet">
+      <EntityTypeMapping TypeName="IsTypeOf(UASEntity.Rule)">
+        <MappingFragment StoreEntitySet="RuleSet">
+          <ScalarProperty Name="Code" ColumnName="Code" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Seq" ColumnName="Seq" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="AuthSet">
+      <EntityTypeMapping TypeName="IsTypeOf(UASEntity.Auth)">
+        <MappingFragment StoreEntitySet="AuthSet">
+          <ScalarProperty Name="Code" ColumnName="Code" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="Seq" ColumnName="Seq" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="OrgDept" TypeName="UASEntity.OrgDept" StoreEntitySet="DeptSet">
+      <EndProperty Name="Org">
+        <ScalarProperty Name="Code" ColumnName="Org_Code" />
+      </EndProperty>
+      <EndProperty Name="Dept">
+        <ScalarProperty Name="Code" ColumnName="Code" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="DeptEmpl" TypeName="UASEntity.DeptEmpl" StoreEntitySet="EmplSet">
+      <EndProperty Name="Dept">
+        <ScalarProperty Name="Code" ColumnName="Dept_Code" />
+      </EndProperty>
+      <EndProperty Name="Empl">
+        <ScalarProperty Name="Code" ColumnName="Code" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="EmplRule" TypeName="UASEntity.EmplRule" StoreEntitySet="EmplRule">
+      <EndProperty Name="Empl">
+        <ScalarProperty Name="Code" ColumnName="Empl_Code" />
+      </EndProperty>
+      <EndProperty Name="Rule">
+        <ScalarProperty Name="Code" ColumnName="Rule_Code" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="RuleAuth" TypeName="UASEntity.RuleAuth" StoreEntitySet="RuleAuth">
+      <EndProperty Name="Rule">
+        <ScalarProperty Name="Code" ColumnName="Rule_Code" />
+      </EndProperty>
+      <EndProperty Name="Auth">
+        <ScalarProperty Name="Code" ColumnName="Auth_Code" />
+      </EndProperty>
+    </AssociationSetMapping>
+  </EntityContainerMapping>
+</Mapping></edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <edmx:Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </edmx:Connection>
+    <edmx:Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="False" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="无" />
+        <DesignerProperty Name="UseLegacyProvider" Value="False" />
+      </DesignerInfoPropertySet>
+    </edmx:Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

@@ -1,0 +1,10 @@
+F:\xufeng\Code\Blueprint\Tool\Blueprint.Tool.ExtMethods\bin\Debug\Blueprint.Tool.ExtMethod.dll
+F:\xufeng\Code\Blueprint\Tool\Blueprint.Tool.ExtMethods\bin\Debug\Blueprint.Tool.ExtMethod.pdb
+F:\xufeng\Code\Blueprint\Tool\Blueprint.Tool.ExtMethods\obj\Debug\Blueprint.Tool.ExtMethod.csprojResolveAssemblyReference.cache
+F:\xufeng\Code\Blueprint\Tool\Blueprint.Tool.ExtMethods\obj\Debug\Blueprint.Tool.ExtMethod.dll
+F:\xufeng\Code\Blueprint\Tool\Blueprint.Tool.ExtMethods\obj\Debug\Blueprint.Tool.ExtMethod.pdb
+E:\Blueprint\Tool\Blueprint.Tool.ExtMethods\bin\Debug\Blueprint.Tool.ExtMethod.dll
+E:\Blueprint\Tool\Blueprint.Tool.ExtMethods\bin\Debug\Blueprint.Tool.ExtMethod.pdb
+E:\Blueprint\Tool\Blueprint.Tool.ExtMethods\obj\Debug\Blueprint.Tool.ExtMethod.dll
+E:\Blueprint\Tool\Blueprint.Tool.ExtMethods\obj\Debug\Blueprint.Tool.ExtMethod.pdb
+E:\Blueprint\Tool\Blueprint.Tool.ExtMethods\obj\Debug\Blueprint.Tool.ExtMethod.csprojResolveAssemblyReference.cache

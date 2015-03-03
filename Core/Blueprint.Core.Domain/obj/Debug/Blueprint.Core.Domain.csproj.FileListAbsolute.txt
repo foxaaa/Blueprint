@@ -1,0 +1,10 @@
+F:\xufeng\Code\Blueprint\Core\Blueprint.Core.Domain\obj\Debug\Blueprint.Core.Domain.csprojResolveAssemblyReference.cache
+F:\xufeng\Code\Blueprint\Core\Blueprint.Core.Domain\bin\Debug\Blueprint.Core.Domain.dll.config
+F:\xufeng\Code\Blueprint\Core\Blueprint.Core.Domain\bin\Debug\Blueprint.Core.Domain.dll
+F:\xufeng\Code\Blueprint\Core\Blueprint.Core.Domain\bin\Debug\Blueprint.Core.Domain.pdb
+F:\xufeng\Code\Blueprint\Core\Blueprint.Core.Domain\bin\Debug\EntityFramework.dll
+F:\xufeng\Code\Blueprint\Core\Blueprint.Core.Domain\bin\Debug\EntityFramework.SqlServer.dll
+F:\xufeng\Code\Blueprint\Core\Blueprint.Core.Domain\bin\Debug\EntityFramework.xml
+F:\xufeng\Code\Blueprint\Core\Blueprint.Core.Domain\bin\Debug\EntityFramework.SqlServer.xml
+F:\xufeng\Code\Blueprint\Core\Blueprint.Core.Domain\obj\Debug\Blueprint.Core.Domain.dll
+F:\xufeng\Code\Blueprint\Core\Blueprint.Core.Domain\obj\Debug\Blueprint.Core.Domain.pdb

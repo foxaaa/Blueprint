@@ -1,0 +1,82 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="UASEntityStoreContainer" CdmEntityContainer="UASEntityContainer">
+    <EntitySetMapping Name="OrgSet">
+      <EntityTypeMapping TypeName="IsTypeOf(UASEntity.Org)">
+        <MappingFragment StoreEntitySet="OrgSet">
+          <ScalarProperty Name="Code" ColumnName="Code" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Seq" ColumnName="Seq" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DeptSet">
+      <EntityTypeMapping TypeName="IsTypeOf(UASEntity.Dept)">
+        <MappingFragment StoreEntitySet="DeptSet">
+          <ScalarProperty Name="Code" ColumnName="Code" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Seq" ColumnName="Seq" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="EmplSet">
+      <EntityTypeMapping TypeName="IsTypeOf(UASEntity.Empl)">
+        <MappingFragment StoreEntitySet="EmplSet">
+          <ScalarProperty Name="Code" ColumnName="Code" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Seq" ColumnName="Seq" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="RuleSet">
+      <EntityTypeMapping TypeName="IsTypeOf(UASEntity.Rule)">
+        <MappingFragment StoreEntitySet="RuleSet">
+          <ScalarProperty Name="Code" ColumnName="Code" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Seq" ColumnName="Seq" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="AuthSet">
+      <EntityTypeMapping TypeName="IsTypeOf(UASEntity.Auth)">
+        <MappingFragment StoreEntitySet="AuthSet">
+          <ScalarProperty Name="Code" ColumnName="Code" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="Seq" ColumnName="Seq" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="OrgDept" TypeName="UASEntity.OrgDept" StoreEntitySet="DeptSet">
+      <EndProperty Name="Org">
+        <ScalarProperty Name="Code" ColumnName="Org_Code" />
+      </EndProperty>
+      <EndProperty Name="Dept">
+        <ScalarProperty Name="Code" ColumnName="Code" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="DeptEmpl" TypeName="UASEntity.DeptEmpl" StoreEntitySet="EmplSet">
+      <EndProperty Name="Dept">
+        <ScalarProperty Name="Code" ColumnName="Dept_Code" />
+      </EndProperty>
+      <EndProperty Name="Empl">
+        <ScalarProperty Name="Code" ColumnName="Code" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="EmplRule" TypeName="UASEntity.EmplRule" StoreEntitySet="EmplRule">
+      <EndProperty Name="Empl">
+        <ScalarProperty Name="Code" ColumnName="Empl_Code" />
+      </EndProperty>
+      <EndProperty Name="Rule">
+        <ScalarProperty Name="Code" ColumnName="Rule_Code" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="RuleAuth" TypeName="UASEntity.RuleAuth" StoreEntitySet="RuleAuth">
+      <EndProperty Name="Rule">
+        <ScalarProperty Name="Code" ColumnName="Rule_Code" />
+      </EndProperty>
+      <EndProperty Name="Auth">
+        <ScalarProperty Name="Code" ColumnName="Auth_Code" />
+      </EndProperty>
+    </AssociationSetMapping>
+  </EntityContainerMapping>
+</Mapping>
